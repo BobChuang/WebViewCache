@@ -36,8 +36,8 @@ public class MainActivity extends Activity {
         WebSettings settings = mWebView.getSettings();
         // 设置javaScript可用
         settings.setJavaScriptEnabled(true);
-        url = "http://ols.sandboxol.com/vip/4216789";
-//        url = "http://www.17173.com";
+//        url = "http://ols.sandboxol.com/vip/4216789";
+        url = "http://www.17173.com";
         findView();
     }
 
@@ -104,7 +104,7 @@ public class MainActivity extends Activity {
         // 开启Application Cache功能
         mWebView.getSettings().setAppCacheEnabled(true);
 
-        Log.i("databasepath", mWebView.getSettings().getDatabasePath());
+        Log.i("cachePath", mWebView.getSettings().getDatabasePath());
 
     }
 
