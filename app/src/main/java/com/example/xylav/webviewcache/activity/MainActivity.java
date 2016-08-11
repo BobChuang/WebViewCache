@@ -31,13 +31,13 @@ public class MainActivity extends Activity {
 
         mWebView = (WebView) this.findViewById(R.id.webview);
 
-        // webView.loadUrl("http://www.baidu.com");
-
         WebSettings settings = mWebView.getSettings();
         // 设置javaScript可用
         settings.setJavaScriptEnabled(true);
 //        url = "http://ols.sandboxol.com/vip/4216789";
-        url = "http://www.17173.com";
+//        url = "http://www.17173.com";
+        url = "http://www.163.com";
+//        url = "http://m.baidu.com";
         findView();
     }
 
@@ -51,7 +51,10 @@ public class MainActivity extends Activity {
 
                 super.onLoadResource(view, url);
             }
-
+            /**
+             * 多页面在同一个WebView中打开，就是不新建activity或者调用系统浏览器打开
+             * 没有这一步会导致调用系统的浏览器打开
+             */
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Log.i(TAG, "intercept url=" + url);
@@ -70,6 +73,7 @@ public class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                Log.e("mWebView", mWebView.getUrl());
             }
 
             @Override
@@ -82,6 +86,7 @@ public class MainActivity extends Activity {
         });
 
         mWebView.loadUrl(url);
+        Log.e("mWebView", mWebView.getUrl());
     }
 
     public void initWebView() {
